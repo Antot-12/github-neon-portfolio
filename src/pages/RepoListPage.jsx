@@ -7,6 +7,9 @@ import RepoGrid from '../components/RepoGrid'
 import SidebarStats from '../components/SidebarStats'
 import LoadingOverlay from '../components/LoadingOverlay'
 import ErrorOverlay from '../components/ErrorOverlay'
+import RepoCardSkeleton from '../components/RepoCardSkeleton'
+import AdvancedFilters, { PROJECT_SIZES } from '../components/AdvancedFilters'
+import TopicGroups from '../components/TopicGroups'
 
 const SORT_OPTIONS = ['Newest', 'Oldest', 'Most commits', 'Fewest commits']
 const PAGE_SIZE = 9
@@ -68,6 +71,14 @@ function RepoListPage() {
   const [page, setPage] = useState(initialPage)
   const [activeIndex, setActiveIndex] = useState(-1)
 
+  // Advanced filters state
+  const [minStars, setMinStars] = useState(0)
+  const [maxStars, setMaxStars] = useState(Infinity)
+  const [projectSizes, setProjectSizes] = useState([])
+  const [hasHomepage, setHasHomepage] = useState(false)
+  const [dateRange, setDateRange] = useState(null)
+  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false)
+
   const filtersInitialized = useRef(false)
 
   const languages = useMemo(() => {
@@ -110,6 +121,38 @@ function RepoListPage() {
       })
     }
 
+    // Advanced filters
+    if (minStars > 0) {
+      list = list.filter(r => (r.stargazers_count || 0) >= minStars)
+    }
+
+    if (projectSizes.length > 0) {
+      list = list.filter(r => {
+        const size = r.size || 0
+        return projectSizes.some(sizeKey => {
+          const sizeConfig = PROJECT_SIZES.find(s => s.value === sizeKey)
+          if (!sizeConfig) return false
+          const prevConfig = PROJECT_SIZES[PROJECT_SIZES.indexOf(sizeConfig) - 1]
+          const min = prevConfig ? prevConfig.max : 0
+          return size >= min && size < sizeConfig.max
+        })
+      })
+    }
+
+    if (hasHomepage) {
+      list = list.filter(r => r.homepage && r.homepage.trim() !== '')
+    }
+
+    if (dateRange !== null) {
+      const cutoffDate = new Date()
+      cutoffDate.setDate(cutoffDate.getDate() - dateRange)
+      list = list.filter(r => {
+        const updated = r.pushed_at || r.updated_at
+        if (!updated) return false
+        return new Date(updated) >= cutoffDate
+      })
+    }
+
     list.sort((a, b) => {
       if (sortBy === 'Newest') {
         return new Date(b.pushed_at || b.updated_at) - new Date(a.pushed_at || a.updated_at)
@@ -127,7 +170,7 @@ function RepoListPage() {
     })
 
     return list
-  }, [visibleRepos, selectedLanguage, selectedTag, sortBy, searchText])
+  }, [visibleRepos, selectedLanguage, selectedTag, sortBy, searchText, minStars, projectSizes, hasHomepage, dateRange])
 
   useEffect(() => {
     if (!filtersInitialized.current) {
@@ -136,7 +179,7 @@ function RepoListPage() {
     }
     setPage(1)
     setActiveIndex(-1)
-  }, [selectedLanguage, selectedTag, sortBy, searchText])
+  }, [selectedLanguage, selectedTag, sortBy, searchText, minStars, projectSizes, hasHomepage, dateRange])
 
   useEffect(() => {
     const params = {}
@@ -189,7 +232,15 @@ function RepoListPage() {
     setSearchText('')
     setPage(1)
     setActiveIndex(-1)
+    setMinStars(0)
+    setMaxStars(Infinity)
+    setProjectSizes([])
+    setHasHomepage(false)
+    setDateRange(null)
+    setAdvancedFiltersOpen(false)
   }
+
+  const hasAdvancedFilters = minStars > 0 || projectSizes.length > 0 || hasHomepage || dateRange !== null
 
   const handleLanguageClickFromSidebar = lang => {
     setSelectedLanguage(lang)
@@ -331,6 +382,8 @@ function RepoListPage() {
               </Typography>
             </Box>
 
+            <TopicGroups repos={visibleRepos} onTopicClick={handleTagClickFromSidebar} />
+
             <RepoFilters
                 languages={languages}
                 tags={tags}
@@ -347,10 +400,37 @@ function RepoListPage() {
                 onSearchChange={setSearchText}
                 onReset={handleResetFilters}
                 searchInputRef={searchInputRef}
+                onAdvancedFiltersClick={() => setAdvancedFiltersOpen(true)}
+                hasAdvancedFilters={hasAdvancedFilters}
+            />
+
+            <AdvancedFilters
+                open={advancedFiltersOpen}
+                onClose={() => setAdvancedFiltersOpen(false)}
+                minStars={minStars}
+                maxStars={maxStars}
+                onStarsChange={(min, max) => {
+                  setMinStars(min)
+                  setMaxStars(max)
+                }}
+                projectSizes={projectSizes}
+                onProjectSizesChange={setProjectSizes}
+                hasHomepage={hasHomepage}
+                onHasHomepageChange={setHasHomepage}
+                dateRange={dateRange}
+                onDateRangeChange={setDateRange}
             />
 
             <Box sx={{ mt: 3 }}>
-              <RepoGrid repos={paginatedRepos} activeIndex={activeIndex} />
+              {loading ? (
+                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 3 }}>
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <RepoCardSkeleton key={i} />
+                  ))}
+                </Box>
+              ) : (
+                <RepoGrid repos={paginatedRepos} activeIndex={activeIndex} />
+              )}
             </Box>
 
             {visibleCount > PAGE_SIZE && (
@@ -380,7 +460,6 @@ function RepoListPage() {
             />
           </Grid>
         </Grid>
-        {loading && <LoadingOverlay text="Loading your repositories..." />}
         {!loading && error && <ErrorOverlay text={error} />}
       </Box>
   )

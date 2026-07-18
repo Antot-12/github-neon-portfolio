@@ -26,6 +26,10 @@ import { motion } from 'framer-motion'
 import { useGithub } from '../GithubContext'
 import LoadingOverlay from '../components/LoadingOverlay'
 import ErrorOverlay from '../components/ErrorOverlay'
+import CodeBlock from '../components/CodeBlock'
+import MermaidDiagram from '../components/MermaidDiagram'
+import SimilarProjects from '../components/SimilarProjects'
+import CodeStatistics from '../components/CodeStatistics'
 
 function decodeBase64Utf8(base64) {
     try {
@@ -534,7 +538,15 @@ function RepoDetailPage() {
                                     components={{
                                         h1: headingRenderer(1),
                                         h2: headingRenderer(2),
-                                        h3: headingRenderer(3)
+                                        h3: headingRenderer(3),
+                                        code: CodeBlock,
+                                        pre: ({ children }) => <>{children}</>,
+                                        div: ({ node, className, children, ...props }) => {
+                                            if (className === 'mermaid') {
+                                                return <MermaidDiagram chart={String(children)} />
+                                            }
+                                            return <div className={className} {...props}>{children}</div>
+                                        }
                                     }}
                                 >
                                     {readme}
@@ -550,11 +562,12 @@ function RepoDetailPage() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.25 }}
                     >
-                        <Paper
-                            elevation={0}
-                            sx={{ p: 2.4, position: { md: 'sticky' }, top: { md: 96 } }}
-                            id="overview"
-                        >
+                        <Stack spacing={3}>
+                            <Paper
+                                elevation={0}
+                                sx={{ p: 2.4, position: { md: 'sticky' }, top: { md: 96 } }}
+                                id="overview"
+                            >
                             <Stack spacing={2.2}>
                                 <Box>
                                     <Typography variant="subtitle2" sx={{ mb: 0.6, color: 'text.secondary' }}>
@@ -919,10 +932,17 @@ function RepoDetailPage() {
                                 </Box>
                             </Stack>
                         </Paper>
-                    </motion.div>
-                </Grid>
+
+                        {/* Code Statistics */}
+                        <CodeStatistics repo={repo} />
+                    </Stack>
+                </motion.div>
             </Grid>
-        </Box>
+        </Grid>
+
+        {/* Similar Projects Section */}
+        <SimilarProjects currentRepo={repo} allRepos={repos} />
+    </Box>
     )
 }
 

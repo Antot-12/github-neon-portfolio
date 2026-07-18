@@ -16,6 +16,7 @@ import {
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
+import TuneIcon from '@mui/icons-material/Tune'
 
 function RepoFilters({
                          languages,
@@ -32,7 +33,9 @@ function RepoFilters({
                          onSortChange,
                          onSearchChange,
                          onReset,
-                         searchInputRef
+                         searchInputRef,
+                         onAdvancedFiltersClick,
+                         hasAdvancedFilters
                      }) {
     const hasSearch = Boolean(searchText && searchText.trim().length > 0)
     const hasLanguageFilter = selectedLanguage && selectedLanguage !== 'All'
@@ -107,6 +110,21 @@ function RepoFilters({
                         ))}
                     </Select>
                 </FormControl>
+                <Tooltip title="Advanced Filters">
+                    <IconButton
+                        onClick={onAdvancedFiltersClick}
+                        sx={{
+                            borderRadius: 999,
+                            border: '1px solid',
+                            borderColor: hasAdvancedFilters ? 'primary.main' : 'divider',
+                            bgcolor: hasAdvancedFilters ? 'rgba(34,211,238,0.08)' : 'transparent',
+                            alignSelf: { xs: 'flex-end', md: 'center' },
+                            mt: { xs: 0.5, md: 0 }
+                        }}
+                    >
+                        <TuneIcon sx={{ fontSize: 20, color: hasAdvancedFilters ? 'primary.main' : 'text.secondary' }} />
+                    </IconButton>
+                </Tooltip>
                 <Tooltip title="Reset filters">
                     <IconButton
                         onClick={onReset}

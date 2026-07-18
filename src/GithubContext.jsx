@@ -219,7 +219,7 @@ import React, {
 
 const GithubContext = createContext(null)
 
-const CACHE_TTL_MS = 1000 * 60 * 5
+const CACHE_TTL_MS = 1000 * 60 * 15 // Increased to 15 minutes
 
 function getEnvString(value) {
   if (!value) return ''
@@ -259,12 +259,13 @@ function saveReposToCache(cacheKey, repos) {
 
 export function GithubProvider({ children }) {
   const username = getEnvString(import.meta.env.VITE_GITHUB_USERNAME) || 'Antot-12'
+  const token = getEnvString(import.meta.env.VITE_GITHUB_TOKEN)
 
   const [repos, setRepos] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  const cacheKey = username ? `githubPortfolio:${username}:repos` : null
+  const cacheKey = username ? `githubPortfolio:${username}:repos:v2` : null
 
   const loadRepos = useCallback(
       async (force = false) => {
@@ -275,6 +276,7 @@ export function GithubProvider({ children }) {
           return
         }
 
+        // Check cache first unless force refresh
         if (!force && cacheKey) {
           const cached = loadReposFromCache(cacheKey)
           if (cached) {
@@ -289,6 +291,7 @@ export function GithubProvider({ children }) {
         setError('')
 
         try {
+          // Load from pre-generated repos.json (no API calls)
           const baseUrl = import.meta.env.BASE_URL || '/'
           const res = await fetch(`${baseUrl}repos.json`)
 
@@ -323,6 +326,7 @@ export function GithubProvider({ children }) {
 
   const value = {
     username,
+    token,
     repos,
     loading,
     error,

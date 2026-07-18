@@ -15,13 +15,15 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import RepoListPage from './pages/RepoListPage'
 import RepoDetailPage from './pages/RepoDetailPage'
 import AboutPage from './pages/AboutPage'
+import AnalyticsDashboard from './pages/AnalyticsDashboard'
 import { useGithub } from './GithubContext'
 import ScrollProgressBar from './components/ScrollProgressBar'
 
 function App() {
-    const { username } = useGithub()
+    const { username, repos } = useGithub()
     const location = useLocation()
     const isAbout = location.pathname.startsWith('/about')
+    const isAnalytics = location.pathname.startsWith('/analytics')
 
     return (
         <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
@@ -66,12 +68,31 @@ function App() {
                                     py: 0.4,
                                     borderRadius: 999,
                                     border: '1px solid',
-                                    borderColor: isAbout ? 'transparent' : 'primary.main',
-                                    color: isAbout ? 'text.secondary' : 'primary.main',
-                                    bgcolor: isAbout ? 'transparent' : 'rgba(34,211,238,0.08)'
+                                    borderColor: !isAbout && !isAnalytics ? 'primary.main' : 'transparent',
+                                    color: !isAbout && !isAnalytics ? 'primary.main' : 'text.secondary',
+                                    bgcolor: !isAbout && !isAnalytics ? 'rgba(34,211,238,0.08)' : 'transparent'
                                 }}
                             >
                                 Projects
+                            </Button>
+                            <Button
+                                component={RouterLink}
+                                to="/analytics"
+                                size="small"
+                                disableElevation
+                                sx={{
+                                    textTransform: 'none',
+                                    fontSize: 13,
+                                    px: 1.6,
+                                    py: 0.4,
+                                    borderRadius: 999,
+                                    border: '1px solid',
+                                    borderColor: isAnalytics ? 'primary.main' : 'transparent',
+                                    color: isAnalytics ? 'primary.main' : 'text.secondary',
+                                    bgcolor: isAnalytics ? 'rgba(34,211,238,0.08)' : 'transparent'
+                                }}
+                            >
+                                Analytics
                             </Button>
                             <Button
                                 component={RouterLink}
@@ -126,6 +147,7 @@ function App() {
             <Container maxWidth="lg" sx={{ py: { xs: 3.5, md: 5 } }}>
                 <Routes>
                     <Route path="/" element={<RepoListPage />} />
+                    <Route path="/analytics" element={<AnalyticsDashboard repos={repos} />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/repo/:name" element={<RepoDetailPage />} />
                 </Routes>

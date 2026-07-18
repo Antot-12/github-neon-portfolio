@@ -24,6 +24,7 @@ import BugReportIcon from '@mui/icons-material/BugReport'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { useGithub } from '../GithubContext'
+import { useImageLoader } from '../hooks/useImageLoader'
 
 function RepoCard({ repo, isActive = false }) {
     const { username } = useGithub()
@@ -39,10 +40,10 @@ function RepoCard({ repo, isActive = false }) {
     const fullName = repo.full_name || `${owner}/${repo.name}`
     const previewImage = `https://opengraph.githubassets.com/1/${fullName}`
 
-    const handleImageError = event => {
-        event.currentTarget.onerror = null
-        event.currentTarget.src = 'public/no_image.jpg'
-    }
+    const { imgSrc, handleError } = useImageLoader(
+        previewImage,
+        `${import.meta.env.BASE_URL || '/'}no_image.jpg`
+    )
 
     const formatNumber = value => {
         const n = Number(value) || 0
@@ -153,14 +154,16 @@ function RepoCard({ repo, isActive = false }) {
                 <Box sx={{ position: 'relative', width: '100%' }}>
                     <CardMedia
                         component="img"
-                        src={previewImage}
+                        src={imgSrc}
                         alt={repo.name}
                         loading="lazy"
-                        onError={handleImageError}
+                        onError={handleError}
                         sx={{
                             height: 140,
                             objectFit: 'cover',
-                            borderBottom: '1px solid rgba(31,41,55,1)'
+                            borderBottom: '1px solid rgba(31,41,55,1)',
+                            backgroundColor: '#111827',
+                            transition: 'opacity 0.3s ease'
                         }}
                     />
                     <Box
