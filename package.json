@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "prebuild": "node ./scripts/fetch-repos.mjs",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "update-repos": "node ./scripts/fetch-repos.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

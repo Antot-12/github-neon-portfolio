@@ -277,7 +277,7 @@ export default function AnalyticsDashboard({ repos }) {
                     <Grid item xs={12} sm={6} md={3}>
                         <StatCard
                             icon={<TrendingUpIcon sx={{ color: 'primary.main' }} />}
-                            label="Total Repositories"
+                            label="Open Repositories"
                             value={analytics.filteredCount}
                         />
                     </Grid>
