@@ -58,6 +58,19 @@ The `/analytics` page provides comprehensive insights into your GitHub portfolio
   - Repository health metrics
   - Growth trends analysis
   
+- 🏥 **Repository Health Scores**:
+  - Health score calculated from 4 markers (25 points each):
+    - ✅ README - Has a README file
+    - ✅ Description - Has a repository description
+    - ✅ Topics - Has at least one topic/tag
+    - ✅ Homepage - Has a homepage URL set
+  - Three health tiers:
+    - 🟢 **Excellent** (100/100) - All 4 checks pass
+    - 🟡 **Good** (50-99) - Some checks pass
+    - 🔴 **Needs Work** (<50) - Few checks pass
+  - Each repo card shows description and topic tags
+  - Click tier chips to filter repositories by health status
+  
 - 🏆 **Achievements System**:
   - Unlock badges based on coding milestones
   - Track progress across multiple achievement categories

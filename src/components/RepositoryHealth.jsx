@@ -14,18 +14,34 @@ export default function RepositoryHealth({ repos }) {
             let score = 0
             const checks = []
 
-            // Has README (50 points)
+            // Has README (25 points)
             const hasReadme = true
             if (hasReadme) {
-                score += 50
+                score += 25
                 checks.push({ label: 'README', passed: true })
             } else {
                 checks.push({ label: 'README', passed: false })
             }
 
-            // Has homepage (50 points)
+            // Has Description (25 points)
+            if (repo.description && repo.description.trim()) {
+                score += 25
+                checks.push({ label: 'Description', passed: true })
+            } else {
+                checks.push({ label: 'Description', passed: false })
+            }
+
+            // Has Topics/Tags (25 points)
+            if (repo.topics && repo.topics.length > 0) {
+                score += 25
+                checks.push({ label: 'Topics', passed: true })
+            } else {
+                checks.push({ label: 'Topics', passed: false })
+            }
+
+            // Has homepage (25 points)
             if (repo.homepage && repo.homepage.trim()) {
-                score += 50
+                score += 25
                 checks.push({ label: 'Homepage', passed: true })
             } else {
                 checks.push({ label: 'Homepage', passed: false })
@@ -38,6 +54,10 @@ export default function RepositoryHealth({ repos }) {
                 status = '🟡 Good'
                 statusColor = '#f59e0b'
             }
+            if (score < 50) {
+                status = '🔴 Needs Work'
+                statusColor = '#ef4444'
+            }
 
             return { score, status, statusColor, checks }
         }
@@ -49,7 +69,8 @@ export default function RepositoryHealth({ repos }) {
 
         // Calculate overall stats
         const excellentCount = reposWithHealth.filter(r => r.health.score === 100).length
-        const goodCount = reposWithHealth.filter(r => r.health.score < 100).length
+        const goodCount = reposWithHealth.filter(r => r.health.score >= 50 && r.health.score < 100).length
+        const needsWorkCount = reposWithHealth.filter(r => r.health.score < 50).length
 
         const avgHealth = reposWithHealth.length > 0
             ? Math.round(reposWithHealth.reduce((sum, r) => sum + r.health.score, 0) / reposWithHealth.length)
@@ -59,6 +80,7 @@ export default function RepositoryHealth({ repos }) {
             reposWithHealth: reposWithHealth.sort((a, b) => b.health.score - a.health.score),
             excellentCount,
             goodCount,
+            needsWorkCount,
             avgHealth
         }
     }, [repos])
@@ -116,6 +138,50 @@ export default function RepositoryHealth({ repos }) {
                     }}
                 />
             </Stack>
+
+            {/* Description */}
+            {repo.description && (
+                <Typography
+                    variant="caption"
+                    sx={{
+                        color: 'text.secondary',
+                        display: 'block',
+                        mb: 1.5,
+                        lineHeight: 1.4,
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                    }}
+                >
+                    {repo.description}
+                </Typography>
+            )}
+
+            {/* Tags/Topics */}
+            {repo.topics && repo.topics.length > 0 && (
+                <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap sx={{ mb: 1.5 }}>
+                    {repo.topics.slice(0, 4).map((topic, idx) => (
+                        <Chip
+                            key={idx}
+                            label={topic}
+                            size="small"
+                            sx={{
+                                height: 20,
+                                fontSize: 10,
+                                bgcolor: 'rgba(34, 211, 238, 0.1)',
+                                color: 'primary.main',
+                                border: '1px solid rgba(34, 211, 238, 0.2)',
+                                '& .MuiChip-label': { px: 1 }
+                            }}
+                        />
+                    ))}
+                    {repo.topics.length > 4 && (
+                        <Typography variant="caption" sx={{ color: 'text.secondary', alignSelf: 'center' }}>
+                            +{repo.topics.length - 4} more
+                        </Typography>
+                    )}
+                </Stack>
+            )}
 
             <LinearProgress
                 variant="determinate"
@@ -188,6 +254,7 @@ export default function RepositoryHealth({ repos }) {
                             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
                                 <StatusChip label="🟢 Excellent" count={healthData.excellentCount} color="#10b981" tier="excellent" />
                                 <StatusChip label="🟡 Good" count={healthData.goodCount} color="#f59e0b" tier="good" />
+                                <StatusChip label="🔴 Needs Work" count={healthData.needsWorkCount} color="#ef4444" tier="needswork" />
                             </Stack>
                             {selectedTier && (
                                 <Typography variant="caption" sx={{ color: 'text.secondary', mt: 1, display: 'block' }}>
@@ -208,14 +275,15 @@ export default function RepositoryHealth({ repos }) {
                     }}
                 >
                     <Typography variant="subtitle1" sx={{ color: 'primary.main', mb: 2 }}>
-                        Repository Health Scores {selectedTier && `- ${selectedTier === 'excellent' ? '🟢 Excellent' : '🟡 Good'}`}
+                        Repository Health Scores {selectedTier && `- ${selectedTier === 'excellent' ? '🟢 Excellent' : selectedTier === 'good' ? '🟡 Good' : '🔴 Needs Work'}`}
                     </Typography>
                     <Stack spacing={1.5}>
                         {healthData.reposWithHealth
                             .filter(repo => {
                                 if (!selectedTier) return true
                                 if (selectedTier === 'excellent') return repo.health.score === 100
-                                if (selectedTier === 'good') return repo.health.score < 100
+                                if (selectedTier === 'good') return repo.health.score >= 50 && repo.health.score < 100
+                                if (selectedTier === 'needswork') return repo.health.score < 50
                                 return true
                             })
                             .slice(0, selectedTier ? 50 : 10)

@@ -237,6 +237,17 @@ export default function AnalyticsDashboard({ repos }) {
                                 ? `Filtered: ${analytics.filteredCount} of ${repos.length} repositories`
                                 : 'Comprehensive overview of your portfolio statistics'}
                         </Typography>
+                        <Chip
+                            label="Public repositories only"
+                            size="small"
+                            sx={{
+                                mt: 1,
+                                bgcolor: 'rgba(34, 211, 238, 0.1)',
+                                color: 'primary.main',
+                                border: '1px solid rgba(34, 211, 238, 0.3)',
+                                fontSize: 11
+                            }}
+                        />
                     </Box>
                 </Stack>
 

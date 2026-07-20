@@ -9,7 +9,6 @@ import LoadingOverlay from '../components/LoadingOverlay'
 import ErrorOverlay from '../components/ErrorOverlay'
 import RepoCardSkeleton from '../components/RepoCardSkeleton'
 import AdvancedFilters, { PROJECT_SIZES } from '../components/AdvancedFilters'
-import TopicGroups from '../components/TopicGroups'
 
 const SORT_OPTIONS = ['Newest', 'Oldest', 'Most commits', 'Fewest commits']
 const PAGE_SIZE = 9
@@ -18,18 +17,16 @@ const HIDDEN_REPO_NAMES = new Set([
   'site',
   'site2',
   'Bomba_Production',
-  'Widget-Store',
-  'Portfolio_12-API',
+  'You-are-gay',
+  'skills-introduction-to-github',
   'resume-project',
-  'Cpp-tasks',
-  'C-tasks',
   'LAB_3',
   'LAB_4',
   'Lab_2',
   'Labs',
-  'C-Assignment-for-Automation-Tester',
   'X',
   'antot-12',
+  'github-readme-streak-stats'
 ])
 
 function loadStoredFilters() {
@@ -382,8 +379,6 @@ function RepoListPage() {
               </Typography>
             </Box>
 
-            <TopicGroups repos={visibleRepos} onTopicClick={handleTagClickFromSidebar} />
-
             <RepoFilters
                 languages={languages}
                 tags={tags}
@@ -433,7 +428,7 @@ function RepoListPage() {
               )}
             </Box>
 
-            {visibleCount > PAGE_SIZE && (
+            {totalPages > 1 && (
                 <Box sx={{ mt: 3.5, display: 'flex', justifyContent: 'center' }}>
                   <Pagination
                       count={totalPages}

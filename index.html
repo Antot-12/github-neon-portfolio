@@ -20,6 +20,20 @@
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Handle SPA routing redirect from 404.html -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const route = params.get('route');
+      if (route) {
+        params.delete('route');
+        const remaining = params.toString();
+        const newUrl = route + (remaining ? '?' + remaining : '');
+        window.history.replaceState(null, '', newUrl);
+      }
+    })();
+  </script>
 </head>
 <body>
 <div id="root"></div>
