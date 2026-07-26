@@ -1,5 +1,92 @@
 [
   {
+    "id": 816982907,
+    "name": "antot-12",
+    "full_name": "Antot-12/antot-12",
+    "description": "A personalized GitHub profile README showcasing development skills, technologies, social links, contribution statistics, achievements, and featured open-source projects.",
+    "html_url": "https://github.com/Antot-12/antot-12",
+    "language": null,
+    "topics": [
+      "developer-profile",
+      "github-profile",
+      "github-stats",
+      "profile-readme"
+    ],
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "open_issues_count": 0,
+    "created_at": "2024-06-18T19:20:32Z",
+    "updated_at": "2026-07-25T23:11:15Z",
+    "pushed_at": "2026-07-25T23:11:12Z",
+    "watchers_count": 0,
+    "size": 599,
+    "commitsCount": 1,
+    "ownerLogin": "Antot-12",
+    "homepage": ""
+  },
+  {
+    "id": 1027862698,
+    "name": "Renamer",
+    "full_name": "Antot-12/Renamer",
+    "description": "A cross-platform Python bulk file-renaming application with drag-and-drop support, metadata-based templates, regular expressions, duplicate detection, previews, backups, and undo history.",
+    "html_url": "https://github.com/Antot-12/Renamer",
+    "language": "Python",
+    "topics": [
+      "bulk-renaming",
+      "desktop-application",
+      "file-renamer",
+      "gui",
+      "metadata-extraction",
+      "mutagen",
+      "pyinstaller",
+      "python",
+      "regex",
+      "tkinterdnd2",
+      "ttkbootstrap"
+    ],
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "open_issues_count": 0,
+    "created_at": "2025-07-28T16:39:37Z",
+    "updated_at": "2026-07-20T09:02:28Z",
+    "pushed_at": "2026-07-20T09:02:18Z",
+    "watchers_count": 0,
+    "size": 16615,
+    "commitsCount": 1,
+    "ownerLogin": "Antot-12",
+    "homepage": ""
+  },
+  {
+    "id": 1101613790,
+    "name": "github-neon-portfolio",
+    "full_name": "Antot-12/github-neon-portfolio",
+    "description": "A neon-themed GitHub portfolio dashboard that transforms public repositories into searchable project cards, analytics charts, achievement badges, repository health metrics, and developer profile insights.",
+    "html_url": "https://github.com/Antot-12/github-neon-portfolio",
+    "language": "JavaScript",
+    "topics": [
+      "analytics-dashboard",
+      "data-visualization",
+      "developer-portfolio",
+      "github-api",
+      "github-pages",
+      "material-ui",
+      "react",
+      "recharts",
+      "vite"
+    ],
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "open_issues_count": 0,
+    "created_at": "2025-11-21T23:49:15Z",
+    "updated_at": "2026-07-20T08:29:09Z",
+    "pushed_at": "2026-07-20T08:28:05Z",
+    "watchers_count": 0,
+    "size": 4015,
+    "commitsCount": 1,
+    "ownerLogin": "Antot-12",
+    "homepage": "https://antot-12.github.io/github-neon-portfolio/"
+  },
+  {
     "id": 1306062476,
     "name": "Old-Start-IT-site",
     "full_name": "Antot-12/Old-Start-IT-site",
@@ -22,7 +109,7 @@
     "updated_at": "2026-07-19T23:43:15Z",
     "pushed_at": "2026-07-19T23:40:51Z",
     "watchers_count": 0,
-    "size": 0,
+    "size": 3601,
     "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/Old-Start-IT-site/"
@@ -76,7 +163,7 @@
     "updated_at": "2026-07-19T22:50:52Z",
     "pushed_at": "2026-07-19T22:50:49Z",
     "watchers_count": 1,
-    "size": 5957,
+    "size": 6938,
     "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/Potrfolio/"
@@ -255,31 +342,6 @@
     "homepage": "https://streak-stats.demolab.com"
   },
   {
-    "id": 816982907,
-    "name": "antot-12",
-    "full_name": "Antot-12/antot-12",
-    "description": "A personalized GitHub profile README showcasing development skills, technologies, social links, contribution statistics, achievements, and featured open-source projects.",
-    "html_url": "https://github.com/Antot-12/antot-12",
-    "language": null,
-    "topics": [
-      "developer-profile",
-      "github-profile",
-      "github-stats",
-      "profile-readme"
-    ],
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "open_issues_count": 0,
-    "created_at": "2024-06-18T19:20:32Z",
-    "updated_at": "2026-07-19T13:03:52Z",
-    "pushed_at": "2026-03-01T15:26:10Z",
-    "watchers_count": 0,
-    "size": 596,
-    "commitsCount": 1,
-    "ownerLogin": "Antot-12",
-    "homepage": ""
-  },
-  {
     "id": 1104881441,
     "name": "Antotopedia_12",
     "full_name": "Antot-12/Antotopedia_12",
@@ -312,38 +374,6 @@
     "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antotopedia-12.vercel.app"
-  },
-  {
-    "id": 1027862698,
-    "name": "Renamer",
-    "full_name": "Antot-12/Renamer",
-    "description": "A cross-platform Python bulk file-renaming application with drag-and-drop support, metadata-based templates, regular expressions, duplicate detection, previews, backups, and undo history.",
-    "html_url": "https://github.com/Antot-12/Renamer",
-    "language": "Python",
-    "topics": [
-      "bulk-renaming",
-      "desktop-application",
-      "file-renamer",
-      "gui",
-      "metadata-extraction",
-      "mutagen",
-      "pyinstaller",
-      "python",
-      "regex",
-      "tkinterdnd2",
-      "ttkbootstrap"
-    ],
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "open_issues_count": 0,
-    "created_at": "2025-07-28T16:39:37Z",
-    "updated_at": "2026-07-19T13:00:44Z",
-    "pushed_at": "2026-04-24T23:22:58Z",
-    "watchers_count": 0,
-    "size": 16595,
-    "commitsCount": 1,
-    "ownerLogin": "Antot-12",
-    "homepage": ""
   },
   {
     "id": 1136566074,
@@ -582,36 +612,6 @@
     "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
-  },
-  {
-    "id": 1101613790,
-    "name": "github-neon-portfolio",
-    "full_name": "Antot-12/github-neon-portfolio",
-    "description": "A neon-themed GitHub portfolio dashboard that transforms public repositories into searchable project cards, analytics charts, achievement badges, repository health metrics, and developer profile insights.",
-    "html_url": "https://github.com/Antot-12/github-neon-portfolio",
-    "language": "JavaScript",
-    "topics": [
-      "analytics-dashboard",
-      "data-visualization",
-      "developer-portfolio",
-      "github-api",
-      "github-pages",
-      "material-ui",
-      "react",
-      "recharts",
-      "vite"
-    ],
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "open_issues_count": 0,
-    "created_at": "2025-11-21T23:49:15Z",
-    "updated_at": "2026-07-19T12:36:20Z",
-    "pushed_at": "2026-07-18T14:22:19Z",
-    "watchers_count": 0,
-    "size": 3983,
-    "commitsCount": 1,
-    "ownerLogin": "Antot-12",
-    "homepage": "https://antot-12.github.io/github-neon-portfolio/"
   },
   {
     "id": 999771358,
@@ -1542,7 +1542,7 @@
     "pushed_at": "2024-12-15T16:45:45Z",
     "watchers_count": 0,
     "size": 10945,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1712,7 +1712,7 @@
     "pushed_at": "2024-09-01T13:06:43Z",
     "watchers_count": 0,
     "size": 7,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1771,7 +1771,7 @@
     "pushed_at": "2024-09-01T15:21:33Z",
     "watchers_count": 0,
     "size": 52,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1798,7 +1798,7 @@
     "pushed_at": "2024-09-12T13:41:23Z",
     "watchers_count": 0,
     "size": 209,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1829,7 +1829,7 @@
     "pushed_at": "2024-09-17T22:11:47Z",
     "watchers_count": 0,
     "size": 37,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1855,7 +1855,7 @@
     "pushed_at": "2024-09-01T00:27:40Z",
     "watchers_count": 0,
     "size": 2,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1883,7 +1883,7 @@
     "pushed_at": "2024-09-01T00:32:16Z",
     "watchers_count": 0,
     "size": 7,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1966,7 +1966,7 @@
     "pushed_at": "2024-08-31T15:25:57Z",
     "watchers_count": 0,
     "size": 10880,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -1992,7 +1992,7 @@
     "pushed_at": "2024-08-31T18:31:04Z",
     "watchers_count": 0,
     "size": 111,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -2019,7 +2019,7 @@
     "pushed_at": "2026-07-19T09:33:38Z",
     "watchers_count": 0,
     "size": 71,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -2046,7 +2046,7 @@
     "pushed_at": "2024-08-11T23:03:16Z",
     "watchers_count": 0,
     "size": 1629,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -2072,7 +2072,7 @@
     "pushed_at": "2024-06-19T23:05:17Z",
     "watchers_count": 0,
     "size": 86,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -2098,7 +2098,7 @@
     "pushed_at": "2024-06-18T18:55:21Z",
     "watchers_count": 0,
     "size": 10,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -2124,7 +2124,7 @@
     "pushed_at": "2023-12-11T23:55:30Z",
     "watchers_count": 0,
     "size": 15163,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/X/"
   },
@@ -2149,7 +2149,7 @@
     "pushed_at": "2023-08-12T13:40:40Z",
     "watchers_count": 0,
     "size": 4,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": ""
   },
@@ -2176,7 +2176,7 @@
     "pushed_at": "2022-02-09T15:59:59Z",
     "watchers_count": 0,
     "size": 4483,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/site2/"
   },
@@ -2201,7 +2201,7 @@
     "pushed_at": "2022-02-09T15:48:08Z",
     "watchers_count": 0,
     "size": 5751,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/site/"
   },
@@ -2228,7 +2228,7 @@
     "pushed_at": "2021-06-16T21:02:26Z",
     "watchers_count": 0,
     "size": 3396,
-    "commitsCount": 0,
+    "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/Bomba_Production/"
   }
