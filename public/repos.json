@@ -1,5 +1,35 @@
 [
   {
+    "id": 1101613790,
+    "name": "github-neon-portfolio",
+    "full_name": "Antot-12/github-neon-portfolio",
+    "description": "A neon-themed GitHub portfolio dashboard that transforms public repositories into searchable project cards, analytics charts, achievement badges, repository health metrics, and developer profile insights.",
+    "html_url": "https://github.com/Antot-12/github-neon-portfolio",
+    "language": "JavaScript",
+    "topics": [
+      "analytics-dashboard",
+      "data-visualization",
+      "developer-portfolio",
+      "github-api",
+      "github-pages",
+      "material-ui",
+      "react",
+      "recharts",
+      "vite"
+    ],
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "open_issues_count": 0,
+    "created_at": "2025-11-21T23:49:15Z",
+    "updated_at": "2026-08-09T07:01:39Z",
+    "pushed_at": "2026-08-09T07:01:29Z",
+    "watchers_count": 0,
+    "size": 4038,
+    "commitsCount": 1,
+    "ownerLogin": "Antot-12",
+    "homepage": "https://antot-12.github.io/github-neon-portfolio/"
+  },
+  {
     "id": 1016728902,
     "name": "Spekulus",
     "full_name": "Antot-12/Spekulus",
@@ -58,36 +88,6 @@
     "commitsCount": 1,
     "ownerLogin": "Antot-12",
     "homepage": "https://antot-12.github.io/Prortfolio-V1/"
-  },
-  {
-    "id": 1101613790,
-    "name": "github-neon-portfolio",
-    "full_name": "Antot-12/github-neon-portfolio",
-    "description": "A neon-themed GitHub portfolio dashboard that transforms public repositories into searchable project cards, analytics charts, achievement badges, repository health metrics, and developer profile insights.",
-    "html_url": "https://github.com/Antot-12/github-neon-portfolio",
-    "language": "JavaScript",
-    "topics": [
-      "analytics-dashboard",
-      "data-visualization",
-      "developer-portfolio",
-      "github-api",
-      "github-pages",
-      "material-ui",
-      "react",
-      "recharts",
-      "vite"
-    ],
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "open_issues_count": 0,
-    "created_at": "2025-11-21T23:49:15Z",
-    "updated_at": "2026-08-02T08:29:15Z",
-    "pushed_at": "2026-08-02T08:28:55Z",
-    "watchers_count": 0,
-    "size": 4032,
-    "commitsCount": 1,
-    "ownerLogin": "Antot-12",
-    "homepage": "https://antot-12.github.io/github-neon-portfolio/"
   },
   {
     "id": 816982907,
